@@ -29,6 +29,12 @@ df = pd.read_csv(file, encoding='utf8')
 # In[ ]:
 
 
+df['payer_name'] = df['payer_name'].fillna('none')
+
+
+# In[ ]:
+
+
 for col in df.columns:
     df[col] = df[col].astype(str)
 
@@ -36,13 +42,13 @@ for col in df.columns:
 # In[ ]:
 
 
-df['payer_name'] = df['payer_name'].fillna('none')
+df = df.drop(columns=['A','0'])
 
 
 # In[ ]:
 
 
-df['standard_charge_dollar'].dtype
+#df['standard_charge_dollar'].dtype
 
 
 # In[ ]:
