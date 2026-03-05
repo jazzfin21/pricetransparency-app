@@ -47,8 +47,8 @@ df = df.drop(columns=['A','0'])
 # In[ ]:
 
 
-#for col in df.columns:
-    #df[col] = df[col].astype(str)
+for col in df.columns:
+    df[col] = df[col].astype(str)
     #print(col, ': ', df[col].dtype, df[col].dtype == pd.ArrowDtype(pa.string()))
 
 
