@@ -47,8 +47,8 @@ df = df.drop(columns=['A','0'])
 # In[ ]:
 
 
-for col in df.columns:
-    df[col] = df[col].astype(str)
+#for col in df.columns:
+    #df[col] = df[col].astype(str)
     #print(col, ': ', df[col].dtype, df[col].dtype == pd.ArrowDtype(pa.string()))
 
 
@@ -69,6 +69,13 @@ unique_payors = df['payer_name'].unique()
 selected_payor = st.selectbox('Select a payor to filer: ', unique_payors)
 
 filtered_df = df[df['payer_name'] == selected_payor]
+
+
+# In[ ]:
+
+
+df = df.to_dict(orient='dict')
+filtered_df = filtered_df.to_dict(orient='dict')
 
 
 # In[ ]:
