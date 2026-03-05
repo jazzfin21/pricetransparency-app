@@ -11,7 +11,13 @@ import pandas as pd
 # In[ ]:
 
 
-file = "C:/Users/AJacobson1/Desktop/Transfer/Output/PricingOutput.csv"
+#file = "C:/Users/AJacobson1/Desktop/Transfer/Output/PricingOutput.csv"
+
+
+# In[ ]:
+
+
+file = https://github.com/jazzfin21/pricetransparency-app/blob/main/PricingOutput.csv
 
 
 # In[ ]:
