@@ -1,26 +1,26 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[20]:
+# In[ ]:
 
 
 import streamlit as st
 import pandas as pd
 
 
-# In[21]:
+# In[ ]:
 
 
 #file = "C:/Users/AJacobson1/Desktop/Transfer/Output/PricingOutput.csv"
 
 
-# In[22]:
+# In[ ]:
 
 
 file = 'https://raw.githubusercontent.com/jazzfin21/pricetransparency-app/refs/heads/main/PricingOutput.csv'
 
 
-# In[23]:
+# In[ ]:
 
 
 df = pd.read_csv(file, encoding='utf8')
@@ -29,7 +29,20 @@ df = pd.read_csv(file, encoding='utf8')
 # In[ ]:
 
 
+for col in df.columns:
+    df[col] = df[col].astype(str)
+
+
+# In[ ]:
+
+
 df['payer_name'] = df['payer_name'].fillna('none')
+
+
+# In[ ]:
+
+
+df['standard_charge_dollar'].dtype
 
 
 # In[ ]:
