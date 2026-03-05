@@ -17,7 +17,7 @@ import pandas as pd
 # In[ ]:
 
 
-file = https://github.com/jazzfin21/pricetransparency-app/blob/main/PricingOutput.csv
+file = 'https://github.com/jazzfin21/pricetransparency-app/blob/main/PricingOutput.csv'
 
 
 # In[ ]:
