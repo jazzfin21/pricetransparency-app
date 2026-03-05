@@ -29,6 +29,12 @@ df = pd.read_csv(file)
 # In[ ]:
 
 
+df['payer_name'] = df['payer_name'].fillna('none')
+
+
+# In[ ]:
+
+
 unique_payors = df['payer_name'].unique()
 selected_payor = st.selectbox('Select a payor to filer: ', unique_payors)
 
