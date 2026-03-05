@@ -1,28 +1,27 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import streamlit as st
 import pandas as pd
 import numpy as np
-import os
 
 
-# In[ ]:
+# In[2]:
 
 
 file = r"C:\Users\AJacobson1\Desktop\Transfer\Output\PricingOutput.csv"
 
 
-# In[ ]:
+# In[3]:
 
 
 df = pd.read_csv(file)
 
 
-# In[ ]:
+# In[4]:
 
 
 unique_payors = df['payer_name'].unique()
@@ -31,7 +30,7 @@ selected_payor = st.selectbox('Select a payor to filer: ', unique_payors)
 filtered_df = df[df['payer_name'] == selected_payor]
 
 
-# In[ ]:
+# In[5]:
 
 
 st.title('Northwell Health Competitor Price Transparency Data')
@@ -40,7 +39,7 @@ st.write('The table below contains hospital price transparency data from the lat
 st.dataframe(df, use_container_width=True)
 
 
-# In[ ]:
+# In[6]:
 
 
 st.write('Here is the data for the payor you selected.')
