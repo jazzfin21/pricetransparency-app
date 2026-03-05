@@ -1,29 +1,29 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[20]:
 
 
 import streamlit as st
 import pandas as pd
 
 
-# In[ ]:
+# In[21]:
 
 
 #file = "C:/Users/AJacobson1/Desktop/Transfer/Output/PricingOutput.csv"
 
 
-# In[ ]:
+# In[22]:
 
 
 file = 'https://raw.githubusercontent.com/jazzfin21/pricetransparency-app/refs/heads/main/PricingOutput.csv'
 
 
-# In[ ]:
+# In[23]:
 
 
-df = pd.read_csv(file)
+df = pd.read_csv(file, encoding='utf8')
 
 
 # In[ ]:
