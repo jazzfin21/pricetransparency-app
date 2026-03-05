@@ -66,12 +66,12 @@ filtered_df = df[df['payer_name'] == selected_payor]
 st.title('Northwell Health Competitor Price Transparency Data')
 st.write('The table below contains hospital price transparency data from the latest machine-readable files published by Northwell Health competitor hospitals.')
 
-st.write(df)
+st.dataframe(df)
 
 
 # In[12]:
 
 
 st.write('Here is the data for the payor you selected.')
-st.write(filtered_df)
+st.dataframe(filtered_df)
 
