@@ -35,7 +35,7 @@ df['payer_name'] = df['payer_name'].fillna('none')
 # In[ ]:
 
 
-df = df.drop(columns=['A','0'])
+df = df.drop(columns=['A','0','description','additional_payer_notes'])
 
 
 # In[ ]:
