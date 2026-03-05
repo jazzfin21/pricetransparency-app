@@ -6,6 +6,7 @@
 
 import streamlit as st
 import pandas as pd
+import pyarrow as pa
 
 
 # In[2]:
@@ -35,23 +36,30 @@ df['payer_name'] = df['payer_name'].fillna('none')
 # In[6]:
 
 
-for col in df.columns:
-    df[col] = df[col].astype(str)
-
-
-# In[7]:
-
-
 df = df.drop(columns=['A','0'])
 
 
-# In[8]:
+# In[ ]:
+
+
+#df = df.to_html(index=False)
+
+
+# In[ ]:
+
+
+#for col in df.columns:
+    #df[col] = df[col].astype(str)
+    #print(col, ': ', df[col].dtype, df[col].dtype == pd.ArrowDtype(pa.string()))
+
+
+# In[ ]:
 
 
 #df['standard_charge_dollar'].dtype
 
 
-# In[9]:
+# In[7]:
 
 
 unique_payors = df['payer_name'].unique()
@@ -60,18 +68,18 @@ selected_payor = st.selectbox('Select a payor to filer: ', unique_payors)
 filtered_df = df[df['payer_name'] == selected_payor]
 
 
-# In[11]:
+# In[10]:
 
 
 st.title('Northwell Health Competitor Price Transparency Data')
 st.write('The table below contains hospital price transparency data from the latest machine-readable files published by Northwell Health competitor hospitals.')
 
-st.dataframe(df)
+st.write(df.to_html(index=False), unsafe_allow_html=True)
 
 
-# In[12]:
+# In[11]:
 
 
 st.write('Here is the data for the payor you selected.')
-st.dataframe(filtered_df)
+st.write(filtered_df.to_html(index=False), unsafe_allow_html=True)
 
