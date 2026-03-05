@@ -23,7 +23,7 @@ file = 'https://raw.githubusercontent.com/jazzfin21/pricetransparency-app/refs/h
 # In[ ]:
 
 
-df = pd.read_csv(file, encoding='unicode_escape')
+df = pd.read_csv(file, encoding='windows-1252')
 
 
 # In[ ]:
@@ -74,8 +74,8 @@ filtered_df = df[df['payer_name'] == selected_payor]
 # In[ ]:
 
 
-df = df.to_dict(orient='dict')
-filtered_df = filtered_df.to_dict(orient='dict')
+#df = df.to_dict(orient='dict')
+#filtered_df = filtered_df.to_dict(orient='dict')
 
 
 # In[ ]:
