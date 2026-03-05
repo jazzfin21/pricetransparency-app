@@ -29,7 +29,7 @@ df = pd.read_csv(file, encoding='utf8')
 # In[ ]:
 
 
-df['payer_name'] = df['payer_name'].fillna('none')
+df = df.fillna('none')
 
 
 # In[ ]:
@@ -47,8 +47,8 @@ df = df.drop(columns=['A','0','description','additional_payer_notes'])
 # In[ ]:
 
 
-#for col in df.columns:
-    #df[col] = df[col].astype(str)
+for col in df.columns:
+    df[col] = df[col].astype(str)
     #print(col, ': ', df[col].dtype, df[col].dtype == pd.ArrowDtype(pa.string()))
 
 
