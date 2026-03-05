@@ -23,7 +23,7 @@ file = 'https://raw.githubusercontent.com/jazzfin21/pricetransparency-app/refs/h
 # In[ ]:
 
 
-df = pd.read_csv(file, encoding='utf8')
+df = pd.read_csv(file, encoding='unicode_escape')
 
 
 # In[ ]:
@@ -35,7 +35,7 @@ df = df.fillna('none')
 # In[ ]:
 
 
-df = df.drop(columns=['A','0','description','additional_payer_notes'])
+df = df.drop(columns=['A','0'])
 
 
 # In[ ]:
@@ -55,7 +55,11 @@ for col in df.columns:
 # In[ ]:
 
 
-#df['standard_charge_dollar'].dtype
+# Convert the DataFrame to a pyarrow Table
+#df = pa.Table.from_pandas(df)
+
+# Print the schema (which lists the pyarrow datatypes)
+#print(table.schema)
 
 
 # In[ ]:
@@ -73,12 +77,12 @@ filtered_df = df[df['payer_name'] == selected_payor]
 st.title('Northwell Health Competitor Price Transparency Data')
 st.write('The table below contains hospital price transparency data from the latest machine-readable files published by Northwell Health competitor hospitals.')
 
-st.table(df)
+st.dataframe(df)
 
 
 # In[ ]:
 
 
 st.write('Here is the data for the payor you selected.')
-st.table(filtered_df)
+st.dataframe(filtered_df)
 
