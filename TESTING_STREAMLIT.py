@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[11]:
 
 
 import streamlit as st
 import pandas as pd
+import pyarrow as pa
+from pyarrow import types
 
 
 # In[ ]:
@@ -14,42 +16,51 @@ import pandas as pd
 #file = "C:/Users/AJacobson1/Desktop/Transfer/Output/PricingOutput.csv"
 
 
-# In[ ]:
+# In[2]:
 
 
 file = 'https://raw.githubusercontent.com/jazzfin21/pricetransparency-app/refs/heads/main/PricingOutput.csv'
 
 
-# In[ ]:
+# In[3]:
 
 
 df = pd.read_csv(file, encoding='windows-1252')
 
 
-# In[ ]:
+# In[4]:
 
 
 df = df.fillna('none')
 
 
-# In[ ]:
+# In[5]:
 
 
 df = df.drop(columns=['A','0'])
 
 
-# In[ ]:
-
-
-#df = df.to_html(index=False)
-
-
-# In[ ]:
+# In[6]:
 
 
 for col in df.columns:
     df[col] = df[col].astype(str)
     #print(col, ': ', df[col].dtype, df[col].dtype == pd.ArrowDtype(pa.string()))
+
+
+# In[7]:
+
+
+#arrow_table = pa.Table.from_pandas(df)
+
+
+# In[12]:
+
+
+#large_utf8_fields = []
+#for field in arrow_table.schema:
+    #if types.is_large_string(field.type): 
+        #large_utf8_fields.append(field.name)
 
 
 # In[ ]:
@@ -84,12 +95,12 @@ filtered_df = df[df['payer_name'] == selected_payor]
 st.title('Northwell Health Competitor Price Transparency Data')
 st.write('The table below contains hospital price transparency data from the latest machine-readable files published by Northwell Health competitor hospitals.')
 
-st.write(df)
+st.dataframe(pa.Table.from_pandas(df))
 
 
 # In[ ]:
 
 
 st.write('Here is the data for the payor you selected.')
-st.write(filtered_df)
+st.dataframe(pa.Table.from_pandas(filtered_df))
 
