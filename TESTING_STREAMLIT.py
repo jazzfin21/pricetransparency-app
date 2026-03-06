@@ -44,7 +44,7 @@ df = df.drop(columns=['A','0'])
 
 
 for col in df.columns:
-    df[col] = df[col].astype(str)
+    df[col] = df[col].astype(object)
     #print(col, ': ', df[col].dtype, df[col].dtype == pd.ArrowDtype(pa.string()))
 
 
@@ -95,12 +95,12 @@ filtered_df = df[df['payer_name'] == selected_payor]
 st.title('Northwell Health Competitor Price Transparency Data')
 st.write('The table below contains hospital price transparency data from the latest machine-readable files published by Northwell Health competitor hospitals.')
 
-st.dataframe(pa.Table.from_pandas(df))
+st.dataframe(df)
 
 
 # In[ ]:
 
 
 st.write('Here is the data for the payor you selected.')
-st.dataframe(pa.Table.from_pandas(filtered_df))
+st.dataframe(filtered_df)
 
